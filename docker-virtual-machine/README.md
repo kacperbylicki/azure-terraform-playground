@@ -28,6 +28,7 @@
   - `terraform init`
   - `terraform plan`
   - `terraform apply -auto-approve`
+  - If you’re not planning to use provisioned infrastructure anymore, to avoid additional costs run `terraform destroy`
 - SSH into Azure Virtual Machine
   - Create private key for SSH connection using: **ssh-keygen -m PEM -t rsa -b 4096 -f ~/.ssh/azure-docker-vm-ssh-pk**
   - Make private key file read only using: **chmod 400 azure-docker-vm-ssh-pk**

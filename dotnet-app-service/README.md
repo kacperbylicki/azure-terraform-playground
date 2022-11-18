@@ -45,12 +45,8 @@
   - If you’re not planning to use provisioned infrastructure anymore, to avoid additional costs run `terraform destroy`
 - Push Docker image to Azure Container Registry [[Guide](https://circleci.com/blog/deploy-dockerized-dotnet-core-to-azure/)]
   - `cd application`
-  - `docker build -t crdotnetdockerappservicedev.azurecr.io/app-dotnet-docker-app-service-dev/app-dotnet-docker-app-service-dev:latest .`
-  - Running docker image from ACR locally - `docker run -d -p 8081:80 crdotnetdockerappservicedev.azurecr.io/app-dotnet-docker-app-service-dev/app-dotnet-docker-app-service-dev`
+  - `az acr build -t crdotnetdockerappservicedev.azurecr.io/app-dotnet-docker-app-service-dev/app-dotnet-docker-app-service-dev:v1.x.x -r crdotnetdockerappservicedev .` (Note that if you have new major version of an app it's a good practice to increment version tag of an image)
+  - (Optional) Running docker image from ACR locally - `docker run -d -p 8080 crdotnetdockerappservicedev.azurecr.io/app-dotnet-docker-app-service-dev/app-dotnet-docker-app-service-dev`
 - Deploy container on Azure App Service
-  - `TOKEN=$(az acr login --name crdotnetdockerappservicedev --expose-token --output tsv --query accessToken)`
-  - `docker login crdotnetdockerappservicedev.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN`
-  - `docker push crdotnetdockerappservicedev.azurecr.io/app-dotnet-docker-app-service-dev/app-dotnet-docker-app-service-dev:latest`
   - Go to Azure Container Registry in Azure Console, Go to Deployment Center and enable Continuous Deployment (Also Continuous Deployment can be done using CricleCI / Github Actions platforms)
     ![Untitled](assets/Untitled.png)
-  - Push the image again to trigger deployment
