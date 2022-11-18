@@ -35,7 +35,7 @@
 - Authenticate using Azure CLI
   - `az —version`
   - if you’re using Azure Student subscription, make sure it’s created then run `az account set --subscription "YOUR_SUBSCRIPTION_ID”`
-  - `az login --scope [https://graph.microsoft.com//.default](https://graph.microsoft.com//.default)`
+  - `az login --scope https://graph.microsoft.com//.default`
 - Provision infrastructure using Terraform
   - `terraform -v`
   - `cd infrastructure`
